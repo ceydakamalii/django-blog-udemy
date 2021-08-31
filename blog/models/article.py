@@ -4,10 +4,12 @@ from django.db.models.fields import AutoField
 from autoslug import AutoSlugField
 from blog.models import CategoryModel
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
+
 class ArticleModel(models.Model):
     image = models.ImageField(upload_to="article_images")
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextField()
     created_date = models.DateTimeField(auto_now_add=True)
     edited_date = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from="title", unique=True)
@@ -17,7 +19,7 @@ class ArticleModel(models.Model):
     class Meta:
         verbose_name= "Article",
         verbose_name_plural="Articles"
-        db_name="Article"
+        db_table="Article"
 
     def __str__(self):
         return self.title
