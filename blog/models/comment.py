@@ -1,12 +1,11 @@
 from django.db import models
 from blog.models import ArticleModel
-
-class CommentModel(models.Model):
+from blog.abstarct_models import DateAbstractModel
+class CommentModel(DateAbstractModel):
     author =  models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name="comment")
     article = models.ForeignKey(ArticleModel, on_delete=models.CASCADE, related_name="comments")
     comment =  models.TextField()
-    created_date = models.DateTimeField(auto_now_add=True)
-    edited_date = models.DateTimeField(auto_now=True)
+   
 
     class Meta:
         verbose_name= "Comment",
