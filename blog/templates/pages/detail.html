@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{post.image.url}}" class="img img-fluid rounded-start" alt="..." style="height: 160px; width: 90%;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.content|safe}}</p>
+        <p class="card-text"><small class="text-muted">Shared before : {{post.edited_date|timesince}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<h5>Comments</h5>
+{% for comment in comments %}
+<div class="card mb-2">
+    <div class="card-body" style="display: flex;flex-direction: row;">
+        <div>
+            
+            {% if comment.author.avatar %}
+            <img src="{{comment.author.avatar.url}}" alt="" class="rounded pt-4" width="75px" height="75px">
+            {% else %}
+            <img src="{% static 'img/no-avatar.jpg' %}" alt="" class="rounded pt-4" width="75px" height="75px">
+            {% endif %}
+        </div>
+        <div>
+            <h5 class="card-title">{{comment.author.username}}</h5>
+            <p class="card-text">{{comment.comment}}</p>
+        </div>
+    </div>
+</div>
+{% empty %}
+<p>There are no comments for this article.</p>
+{% endfor %}
+
+
+
+  
+{% endblock %}
