@@ -4,3 +4,4 @@ from .contact import contact
 from .category import category
 from .my_posts import myPosts
 from .addArticle import addArticle
+from .updateArticle import updateArticle
