@@ -15,7 +15,11 @@
         <p class="card-text">
           <small class="text-muted">Shared before : {{post.edited_date|timesince}}</small>
           {% if request.user == post.author %}
-          <p><a class="btn btn-success" href="{% url 'update-article' slug=post.slug %}">Update</a></p>
+          <p>
+            <a class="btn btn-primary" href="{% url 'update-article' slug=post.slug %}">Update Article</a>
+            <a class="btn btn-danger" href="{% url 'delete-article' slug=post.slug %}">Delete Article</a>
+          </p>
+          
           {% endif %}
         </p>
       </div>

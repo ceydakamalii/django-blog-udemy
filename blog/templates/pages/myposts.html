@@ -17,7 +17,12 @@
         <th scope="row">{{article.id}}</th>
         <td>{{article.title}}</td>
         <td>{{article.edited_date}}</td>
-        <td>Actions</td>
+        <td>
+            <p>
+              <a class="btn btn-primary" href="{% url 'update-article' slug=article.slug %}">Update Article</a>
+              <a class="btn btn-danger" href="{% url 'delete-article' slug=article.slug %}">Delete Article</a>
+            </p>
+        </td>
       </tr>
       {% empty %}
         <p>No posts found in the system...</p>

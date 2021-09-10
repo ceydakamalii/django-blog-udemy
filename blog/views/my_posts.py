@@ -8,7 +8,7 @@ def myPosts(request):
     articles = request.user.articles.order_by('id')
     print(articles)
     page = request.GET.get('page')
-    paginator = Paginator(articles, 2)
+    paginator = Paginator(articles, 8)
     context={
         'articles': paginator.get_page(page)
     }
