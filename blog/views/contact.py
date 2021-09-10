@@ -7,7 +7,7 @@ def contact(request):
   if request.method == 'POST':
    form = ContactForm(request.POST)
    if form.is_valid():
-     """
+     """ # forms.Form
      contact = ContactModel()
      contact.email = form.cleaned_data.get('email')
      contact.first_name = form.cleaned_data.get('first_name')
@@ -15,7 +15,7 @@ def contact(request):
      contact.message = form.cleaned_data.get('message')
      contact.save()
      """
-     form.save()
+     form.save() # forms.ModelForm 
      return redirect('home')
   context={
       'form':form
