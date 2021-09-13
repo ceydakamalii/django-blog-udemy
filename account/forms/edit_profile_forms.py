@@ -1,5 +1,4 @@
 from django .contrib.auth.forms import UserChangeForm
-from django.forms.models import fields_for_model
 from account.models import CustomUserModel
 
 class EditProfileForms(UserChangeForm):
