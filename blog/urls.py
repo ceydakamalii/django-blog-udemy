@@ -1,6 +1,6 @@
 from blog.views.detail import detail
 from django.urls import path, include
-from blog.views import contact, home,myPosts,category,detail,addArticle,updateArticle,deleteArticle
+from blog.views import contact, home,myPosts,category,detail,addArticle,updateArticle,deleteArticle, deleteComment
 
 urlpatterns = [
     path('',home, name='home'),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('add-article',addArticle , name='add-article'),
     path('update-article/<slug:slug>', updateArticle, name='update-article'),
     path('delete-article/<slug:slug>', deleteArticle, name='delete-article'),
+    path('delete-comment/<int:id>', deleteComment, name='delete-comment'),
 ]

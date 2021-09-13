@@ -6,3 +6,5 @@ from .my_posts import myPosts
 from .addArticle import addArticle
 from .updateArticle import updateArticle
 from .deleteArticle import deleteArticle
+from .deleteComment import deleteComment
+from .deleteComment import deleteComment
