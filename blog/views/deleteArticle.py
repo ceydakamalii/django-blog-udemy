@@ -1,11 +1,11 @@
 from blog.models import ArticleModel
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
-class DeleteArticle(DeleteView):
-    
+class DeleteArticle(LoginRequiredMixin, DeleteView):
+    login_url=reverse_lazy('login')
     template_name = 'pages/delete_article_confirmation.html'
     success_url = reverse_lazy('myposts')
     def get_queryset(self):

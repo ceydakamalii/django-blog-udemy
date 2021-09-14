@@ -14,7 +14,11 @@
         <h5 class="card-title">{{post.title}}</h5>
         <p class="card-text">{{post.content|safe}}</p>
         <p class="card-text">
-          <small class="text-muted">Shared before : {{post.edited_date|timesince}}</small>
+          <small class="text-muted">
+            Shared before : {{post.edited_date|timesince}}
+            <br>
+            Author : <a style="color: black; text-decoration: none;" href="{% url 'profile' username=post.author.username %}">{{post.author.first_name}} {{post.author.last_name}}</a>
+          </small>
           {% if request.user == post.author %}
           <p>
             <a class="btn btn-primary" href="{% url 'update-article' slug=post.slug %}">Update Article</a>
