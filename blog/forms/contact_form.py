@@ -1,10 +1,21 @@
 from django import forms
 from django.db.models import fields
 from blog.models import ContactModel
+from django.core.mail import send_mail
+
 class ContactForm(forms.ModelForm):
-   class Meta:
+    class Meta:
        model = ContactModel
        fields = ('email','first_name','last_name','message')
+
+    def send_email(self,message):
+        send_mail(
+            subject='There is a new message from the contact form',
+            message=message,
+            recipient_list=['ceydakamali3@gmail.com'],
+            fail_silently=False
+        )
+
 
 
 """ class ContactForm(forms.Form):

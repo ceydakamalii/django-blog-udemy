@@ -13,4 +13,5 @@ urlpatterns = [
     path('delete-comment/<int:id>', deleteComment, name='delete-comment'),
     path('about',TemplateView.as_view(template_name='pages/about.html'), name='about'),
     path('redirect',RedirectView.as_view(url='https://www.google.com'), name='redirect'),
+    path('email-sent', TemplateView.as_view(template_name='pages/email-sent.html'), name='email-sent'),
 ]
