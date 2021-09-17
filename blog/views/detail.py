@@ -13,6 +13,7 @@ class Detail(View):
     add_comment_form = AddCommentForm
     
     def get(self, request, slug):
+        #print(1/0) sentry 
         post = get_object_or_404(ArticleModel, slug=slug)
         if request.user.is_authenticated:
             logger.info('Article Read : '+request.user.username)
