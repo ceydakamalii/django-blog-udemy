@@ -3,6 +3,9 @@ from blog.models import ArticleModel
 from blog.forms import AddCommentForm
 from django.views import View
 from django.contrib import messages
+import logging
+
+logger = logging.getLogger('text_reading')
 
 class Detail(View):
 
@@ -11,6 +14,8 @@ class Detail(View):
     
     def get(self, request, slug):
         post = get_object_or_404(ArticleModel, slug=slug)
+        if request.user.is_authenticated:
+            logger.info('Article Read : '+request.user.username)
         comments = post.comments.all()
         return render(request,'pages/detail.html',context={
         'post':post,

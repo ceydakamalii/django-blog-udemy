@@ -103,3 +103,33 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL='ceydakamali3@gmail.com'
 EMAIL_HOST_USER = 'ceydakamali3@gmail.com'
 EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters':{
+        'simple_expression':{
+            'format':'{process:d} {thread:d} {asctime} {levelname} {module} {message}',
+            'style':'{'
+        }
+
+    },
+    'handlers':{
+        'console': {
+            'class': 'logging.StreamHandler'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'logs/text_reading.log',
+            'formatter':'simple_expression'
+        }
+
+    },
+    'loggers':{
+        'text_reading':{
+            'handlers': ['console','file'],
+            'level': 'INFO'
+        }
+    }
+
+}
