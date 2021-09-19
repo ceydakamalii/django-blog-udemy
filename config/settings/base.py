@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'account',
     'ckeditor',
     'crispy_forms',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -133,12 +134,3 @@ LOGGING = {
     }
 }
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-
-sentry_sdk.init(
-    dsn=env('SENTRY_DSN'),
-    integrations=[DjangoIntegration()],
-    traces_sample_rate=1.0,
-    send_default_pii=True
-)
