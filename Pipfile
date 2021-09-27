@@ -13,6 +13,8 @@ django-environ = "*"
 sentry-sdk = "*"
 boto3 = "*"
 django-storages = "*"
+tailwindcss = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
